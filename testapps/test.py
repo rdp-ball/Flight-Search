@@ -3,11 +3,13 @@ from openai import OpenAI
 from amadeus import Client, ResponseError
 
 # Initialize Amadeus client
-amadeus = Client(
-    client_id='8zAQaOrWiKQnWpS1W5dAoGKyApdr2zmH',
-    client_secret='4dZJVCV22xIwROU7'
-)
+load_dotenv()
 
+# Initialize the Amadeus client
+amadeus = Client(
+    client_id=os.getenv('AMADEUS_CLIENT_ID'),
+    client_secret=os.getenv('AMADEUS_CLIENT_SECRET')
+)
 # Function to interact with LM Studio
 def interact_with_llm(text):
     client = OpenAI(base_url="http://localhost:8000/v1", api_key="lm-studio")
