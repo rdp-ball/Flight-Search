@@ -7,9 +7,9 @@ from langchain import PromptTemplate, LLMChain
 import json
 import re
 import torch
-
+load_dotenv()
 # Log in to Hugging Face
-access_token = "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"
+access_token = os.getenv('huggin_face_token')
 login(token=access_token)
 
 # Load the text generation model and tokenizer
@@ -32,9 +32,12 @@ pipeline_inst = pipeline(
 llm = HuggingFacePipeline(pipeline=pipeline_inst)
 
 # Initialize the Amadeus client
+
+
+# Initialize the Amadeus client
 amadeus = Client(
-    client_id='8zAQaOrWiKQnWpS1W5dAoGKyApdr2zmH',
-    client_secret='4dZJVCV22xIwROU7'
+    client_id=os.getenv('AMADEUS_CLIENT_ID'),
+    client_secret=os.getenv('AMADEUS_CLIENT_SECRET')
 )
 
 def extract_dict_from_message(message):
