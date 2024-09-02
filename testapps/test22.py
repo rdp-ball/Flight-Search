@@ -4,9 +4,12 @@ import datetime
 from openai import OpenAI
 
 # Initialize the Amadeus client
+load_dotenv()
+
+# Initialize the Amadeus client
 amadeus = Client(
-    client_id='8zAQaOrWiKQnWpS1W5dAoGKyApdr2zmH',
-    client_secret='4dZJVCV22xIwROU7'
+    client_id=os.getenv('AMADEUS_CLIENT_ID'),
+    client_secret=os.getenv('AMADEUS_CLIENT_SECRET')
 )
 
 # Initialize OpenAI client
