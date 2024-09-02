@@ -1,9 +1,11 @@
 from amadeus import Client, ResponseError
 
+load_dotenv()
+
 # Initialize the Amadeus client
 amadeus = Client(
-    client_id='8zAQaOrWiKQnWpS1W5dAoGKyApdr2zmH',
-    client_secret='4dZJVCV22xIwROU7'
+    client_id=os.getenv('AMADEUS_CLIENT_ID'),
+    client_secret=os.getenv('AMADEUS_CLIENT_SECRET')
 )
 
 def search_flights(origin, destination, departure_date, adults=1):
